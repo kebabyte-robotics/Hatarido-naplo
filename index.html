@@ -27,69 +27,253 @@
 
         }
  
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 20px; }
+        body { 
 
-        /* Login Screen */
+            font-family: 'Segoe UI', Arial, sans-serif; 
+
+            background-color: var(--bg-color); 
+
+            color: var(--text-color);
+
+            margin: 0; 
+
+            padding: 20px; 
+
+        }
+ 
+        /* --- BEJELENTKEZŐ KÉPERNYŐ --- */
 
         #login-overlay {
 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 
-            background: var(--bg-color); display: flex; align-items: center; justify-content: center; z-index: 5000;
+            background: var(--bg-color); 
+
+            display: flex; align-items: center; justify-content: center; 
+
+            z-index: 5000;
 
         }
 
-        .login-box { text-align: center; padding: 40px; border: 2px solid var(--accent-blue); border-radius: 20px; }
+        .login-box { 
 
-        .login-box h2 { font-weight: 900; letter-spacing: 2px; }
+            text-align: center; 
+
+            padding: 50px; 
+
+            border: 2px solid var(--accent-blue); 
+
+            border-radius: 20px; 
+
+            background: #0a0a0a;
+
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+
+        }
+
+        .login-box h2 { font-weight: 900; letter-spacing: 3px; font-size: 2em; color: var(--accent-blue); margin-top: 0; }
+
+        .login-box p { color: #888; font-weight: bold; margin-bottom: 30px; }
+
+        .btn-login { 
+
+            background: var(--accent-blue); 
+
+            color: #000; 
+
+            font-size: 1.2em; 
+
+            font-weight: 900;
+
+            padding: 15px 30px; 
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+
+        }
+
+        .btn-login:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
  
-        h1 { text-align: center; font-weight: 900; font-size: 2.5em; color: var(--accent-blue); text-transform: uppercase; }
+        /* --- FŐOLDAL --- */
+
+        h1 { 
+
+            text-align: center; 
+
+            font-weight: 900; 
+
+            font-size: 2.5em;
+
+            letter-spacing: 2px;
+
+            color: var(--accent-blue);
+
+            text-transform: uppercase;
+
+            margin-bottom: 30px;
+
+        }
  
-        .task-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        /* Rácsos elrendezés a feladatoknak */
+
+        .task-list { 
+
+            display: grid; 
+
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+
+            gap: 15px; 
+
+            padding: 10px;
+
+        }
+
+        /* 3:5 Arányú kártyák */
 
         .task-card { 
 
-            background: var(--card-bg); aspect-ratio: 5 / 3; padding: 15px; border-radius: 8px; 
+            background: var(--card-bg);
 
-            border-left: 12px solid var(--grey); display: flex; flex-direction: column; 
+            aspect-ratio: 5 / 3;
 
-            justify-content: space-between; box-sizing: border-box; border-top: 1px solid #222;
+            padding: 15px; 
+
+            border-radius: 8px; 
+
+            border-left: 12px solid var(--grey);
+
+            display: flex; 
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            box-sizing: border-box;
+
+            transition: 0.2s;
+
+            border-top: 1px solid #222;
 
         }
  
-        .status-urgent { border-left-color: var(--red) !important; }
+        /* Színek (Piros, Zöld, Sárga, Szürke) */
+
+        .status-urgent { border-left-color: var(--red) !important; background: #1a0a0a; }
 
         .status-done { border-left-color: var(--green) !important; opacity: 0.4; }
 
-        .status-progress { border-left-color: var(--yellow) !important; }
+        .status-progress { border-left-color: var(--yellow) !important; background: #1a1a0a; }
  
-        .task-info b { font-size: 1.1em; font-weight: 900; display: block; text-transform: uppercase; }
+        .task-info b { font-size: 1.1em; font-weight: 900; display: block; text-transform: uppercase; margin-bottom: 5px; }
 
-        .worker-status { color: var(--yellow); font-size: 0.75em; font-weight: 900; margin-top: 5px; }
+        .task-info span { font-size: 0.85em; font-weight: 800; color: #777; }
+
+        .worker-status { 
+
+            color: var(--yellow); 
+
+            font-size: 0.75em; 
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            margin-top: 5px;
+
+        }
  
+        /* Gombok a kártyán */
+
         .btn-group { display: flex; gap: 5px; margin-top: 10px; }
 
-        button { padding: 8px 12px; border-radius: 4px; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 0.7em; }
+        .task-card button { 
 
-        .btn-login { background: var(--accent-blue); color: #000; font-size: 1em; padding: 15px 30px; }
+            padding: 6px 10px; 
+
+            border-radius: 4px; 
+
+            border: none; 
+
+            font-weight: 900; 
+
+            cursor: pointer; 
+
+            font-size: 0.7em;
+
+            text-transform: uppercase;
+
+        }
 
         .btn-work { background: var(--yellow); color: #000; }
 
         .btn-done { background: var(--green); color: #000; }
 
         .btn-del { background: transparent; color: #555; border: 1px solid #333; }
+
+        .task-card button:hover { filter: brightness(1.2); }
  
-        .fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--accent-blue); border-radius: 50%; font-size: 30px; font-weight: 900; border: none; cursor: pointer; }
+        /* Lebegő plusz gomb */
+
+        .fab {
+
+            position: fixed; bottom: 30px; right: 30px;
+
+            width: 60px; height: 60px;
+
+            background: var(--accent-blue); border-radius: 50%;
+
+            font-size: 30px; font-weight: 900; color: #000;
+
+            display: flex; align-items: center; justify-content: center;
+
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+
+            border: none; cursor: pointer; z-index: 1001;
+
+        }
+
+        .fab:hover { transform: scale(1.1); }
  
-        /* Modal */
+        /* Felugró ablak (Modal) */
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 2000; }
+        .modal {
 
-        .modal-content { background: #111; padding: 30px; border-radius: 15px; width: 300px; display: flex; flex-direction: column; gap: 15px; border: 2px solid #333; }
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 
-        input { background: #222; border: 1px solid #444; padding: 12px; color: #fff; border-radius: 6px; font-weight: 900; }
+            background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 2000;
 
-        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); }
+        }
+
+        .modal-content {
+
+            background: #111; padding: 30px; border-radius: 15px; width: 300px;
+
+            display: flex; flex-direction: column; gap: 15px; border: 2px solid #333;
+
+        }
+
+        input { 
+
+            background: #222; border: 2px solid #444; padding: 12px; 
+
+            color: #fff; border-radius: 6px; font-weight: 900;
+
+        }
+ 
+        /* Fehér naptár ikon a sötét háttéren */
+
+        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+ 
+        .save-btn { background: var(--accent-blue); color:#000; font-weight: 900; padding: 12px; border: none; border-radius: 6px; cursor: pointer; }
+
+        .cancel-btn { background: transparent; color:#555; font-weight: 900; border: none; cursor: pointer; padding: 10px; }
 </style>
 </head>
 <body>
@@ -97,7 +281,7 @@
 <div id="login-overlay">
 <div class="login-box">
 <h2>TASK ASSIGNMENT</h2>
-<p>Please sign in to access the shared board</p>
+<p>AKG School Project Login</p>
 <button class="btn-login" onclick="login()">LOGIN WITH MICROSOFT</button>
 </div>
 </div>
@@ -107,22 +291,22 @@
 <div id="taskList" class="task-list"></div>
 </div>
  
-<button class="fab" onclick="openModal()">+</button>
+<button class="fab" id="fab-btn" style="display:none;" onclick="openModal()">+</button>
  
 <div id="taskModal" class="modal">
 <div class="modal-content">
-<h2 style="margin:0; font-weight:900;">NEW TASK</h2>
+<h2 style="margin:0; font-size: 1.5em; font-weight: 900; color: var(--accent-blue);">NEW TASK</h2>
 <input type="text" id="taskTitle" placeholder="Task description">
 <input type="date" id="taskDeadline">
-<input type="text" id="taskWorker" placeholder="Assignee">
-<button style="background: var(--accent-blue); color:#000;" onclick="addTask()">SAVE & SYNC</button>
-<button onclick="closeModal()" style="background:transparent; color:#555;">CANCEL</button>
+<input type="text" id="taskWorker" placeholder="Assignee (Who?)">
+<button class="save-btn" onclick="addTask()">SAVE TASK</button>
+<button class="cancel-btn" onclick="closeModal()">CANCEL</button>
 </div>
 </div>
  
 <script>
 
-    // --- MICROSOFT AUTH CONFIG ---
+    // --- MICROSOFT BEJELENTKEZÉS BEÁLLÍTÁSAI ---
 
     const msalConfig = {
 
@@ -130,7 +314,9 @@
 
             clientId: "3b333cb2-a15d-48af-b230-8eb6e66deaad",
 
-            authority: "https://login.microsoftonline.com/common"
+            // Itt adtuk meg, hogy az akg.hu rendszere engedje be a diákokat
+
+            authority: "https://login.microsoftonline.com/akg.hu" 
 
         }
 
@@ -144,35 +330,43 @@
 
             await msalInstance.loginPopup();
 
+            // Sikeres belépés után eltüntetjük a login ablakot és mutatjuk a feladatokat
+
             document.getElementById('login-overlay').style.display = 'none';
 
             document.getElementById('main-app').style.display = 'block';
 
-            startSync(); // Adatok betöltése belépés után
+            document.getElementById('fab-btn').style.display = 'flex';
 
-        } catch (err) { alert("Login failed"); }
+            renderTasks();
+
+        } catch (err) { 
+
+            console.error(err);
+
+            alert("Login failed or cancelled. Please try again."); 
+
+        }
 
     }
  
-    // --- SHARED STORAGE LOGIC ---
+    // Automatikus belépés, ha már be voltál jelentkezve korábban
 
-    // Ahhoz, hogy mindenkinél ugyanaz legyen, egy API-t kellene hívni. 
+    if (msalInstance.getAllAccounts().length > 0) {
 
-    // Itt egy szimuláció: a valóságban ide egy Firebase vagy JSONbin URL kell.
+        document.getElementById('login-overlay').style.display = 'none';
 
-    let tasks = [];
- 
-    async function startSync() {
+        document.getElementById('main-app').style.display = 'block';
 
-        // Ez a függvény töltené le az adatokat a szerverről
-
-        // loadFromCloud(); 
+        document.getElementById('fab-btn').style.display = 'flex';
 
         renderTasks();
 
-        // 5 másodpercenként frissíthetne: setInterval(loadFromCloud, 5000);
-
     }
+ 
+    // --- FELADATKEZELŐ LOGIKA ---
+
+    let tasks = JSON.parse(localStorage.getItem('akgTaskAssignmentData')) || [];
  
     function openModal() { document.getElementById('taskModal').style.display = 'flex'; }
 
@@ -186,17 +380,21 @@
 
         const worker = document.getElementById('taskWorker').value;
 
-        if (!title || !deadline) return;
+        if (!title || !deadline) return alert("Task title and deadline are required!");
 
-        const newTask = { id: Date.now(), title, deadline, worker, completed: false, inProgress: false };
-
-        tasks.push(newTask);
-
-        // Itt küldenénk el a szerverre: syncToCloud(tasks);
+        tasks.push({ id: Date.now(), title, deadline, worker, completed: false, inProgress: false });
 
         saveAndRender();
 
         closeModal();
+
+        // Mezők törlése
+
+        document.getElementById('taskTitle').value = '';
+
+        document.getElementById('taskDeadline').value = '';
+
+        document.getElementById('taskWorker').value = '';
 
     }
  
@@ -226,9 +424,7 @@
  
     function saveAndRender() {
 
-        // Most még localstorage-ba mentünk, de ide jön a "Cloud Sync"
-
-        localStorage.setItem('sharedTasks', JSON.stringify(tasks));
+        localStorage.setItem('akgTaskAssignmentData', JSON.stringify(tasks));
 
         renderTasks();
 
@@ -240,19 +436,23 @@
 
         list.innerHTML = '';
 
+        // Dátum szerinti sorbarendezés
+
         tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
  
         tasks.forEach(task => {
 
             const diffDays = Math.ceil((new Date(task.deadline) - new Date().setHours(0,0,0,0)) / (1000*60*60*24));
 
-            let statusClass = "status-default";
+            // Szín logika
 
-            if (task.completed) statusClass = "status-done";
+            let statusClass = "status-default"; // Alap szürke
 
-            else if (diffDays <= 5 && diffDays >= 0) statusClass = "status-urgent";
+            if (task.completed) statusClass = "status-done"; // Zöld
 
-            else if (task.inProgress) statusClass = "status-progress";
+            else if (diffDays <= 5 && diffDays >= 0) statusClass = "status-urgent"; // Piros
+
+            else if (task.inProgress) statusClass = "status-progress"; // Sárga
  
             list.innerHTML += `
 <div class="task-card ${statusClass}">
@@ -267,21 +467,11 @@
 <button class="btn-done" onclick="toggleDone(${task.id})">DONE</button>
 <button class="btn-del" onclick="deleteTask(${task.id})">✕</button>
 </div>
-</div>`;
+</div>
+
+            `;
 
         });
-
-    }
- 
-    // Ha már volt belépve
-
-    if (msalInstance.getAllAccounts().length > 0) {
-
-        document.getElementById('login-overlay').style.display = 'none';
-
-        document.getElementById('main-app').style.display = 'block';
-
-        startSync();
 
     }
 </script>
