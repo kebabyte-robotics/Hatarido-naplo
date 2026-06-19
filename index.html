@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +54,7 @@
         .fab:hover { transform: scale(1.1); }
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 2000; }
         .modal-content { background: #111; padding: 30px; border-radius: 15px; width: 300px; display: flex; flex-direction: column; gap: 15px; border: 2px solid #333; }
+        .input { background: #222; border: 2px solid #444; padding: 12px; color: #fff; border-radius: 6px; font-weight: 900; }
         input { background: #222; border: 2px solid #444; padding: 12px; color: #fff; border-radius: 6px; font-weight: 900; }
         input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
         .save-btn { background: var(--accent-blue); color:#000; font-weight: 900; padding: 12px; border: none; border-radius: 6px; cursor: pointer; }
@@ -64,13 +65,13 @@
 
 <div id="login-overlay">
     <div class="login-box">
-        <h2>Hataridonaplo</h2>
-        <button class="btn-login" onclick="login()">LOGIN WITH MICROSOFT</button>
+        <h2>Határidő napló</h2>
+        <button class="btn-login" onclick="login()">BEJELENTKEZÉS MICROSOFT FIÓKKAL</button>
     </div>
 </div>
 
 <div class="container" id="main-app" style="display:none;">
-    <h1>Hataridonaplo</h1>
+    <h1>Határidő napló</h1>
     <div id="taskList" class="task-list"></div>
 </div>
 
@@ -78,12 +79,12 @@
 
 <div id="taskModal" class="modal">
     <div class="modal-content">
-        <h2 style="margin:0; font-size: 1.5em; font-weight: 900; color: var(--accent-blue);">New Task</h2>
-        <input type="text" id="taskTitle" placeholder="Task Describtion">
-        <input type="date" id="Deadline">
-        <input type="text" id="taskWorker" placeholder="Assigne">
-        <button class="save-btn" onclick="addTask()">Save Task</button>
-        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        <h2 style="margin:0; font-size: 1.5em; font-weight: 900; color: var(--accent-blue);">ÚJ FELADAT</h2>
+        <input type="text" id="taskTitle" placeholder="Feladat leírása">
+        <input type="date" id="taskDeadline">
+        <input type="text" id="taskWorker" placeholder="Felelős">
+        <button class="save-btn" onclick="addTask()">FELADAT MENTÉSE</button>
+        <button class="cancel-btn" onclick="closeModal()">MÉGSE</button>
     </div>
 </div>
 
@@ -121,7 +122,7 @@
             showApp();
         } catch (err) { 
             console.error(err);
-            alert("Login failed or cancelled. Please try again."); 
+            alert("A bejelentkezés sikertelen volt vagy megszakadt. Kérjük, próbálja újra."); 
         }
     }
 
@@ -158,7 +159,7 @@
         const deadline = document.getElementById('taskDeadline').value;
         const worker = document.getElementById('taskWorker').value;
         
-        if (!title || !deadline) return alert("Task title and deadline are required!");
+        if (!title || !deadline) return alert("A feladat leírása és a határidő megadása kötelező!");
         
         await addDoc(collection(db, "tasks"), {
             title: title,
@@ -174,7 +175,7 @@
         document.getElementById('taskWorker').value = '';
     }
 
-    // --- AZ ÁTÍRT RÉSZ: AUTOMATIKUS NÉV BEÍRÁSA A START GOMBNÁL ---
+    // --- AUTOMATIKUS NÉV BEÍRÁSA A START GOMBNÁL ---
     window.toggleProgress = async function(id, currentState) {
         let updateData = { 
             inProgress: !currentState, 
@@ -224,13 +225,13 @@
                 <div class="task-card ${statusClass}">
                     <div class="task-info">
                         <b>${task.title}</b>
-                        <span>📅 DUE: ${task.deadline}</span>
-                        ${task.inProgress ? `<div class="worker-status">👤 ${task.worker || 'Active'}</div>` : ''}
+                        <span>📅 HATÁRIDŐ: ${task.deadline}</span>
+                        ${task.inProgress ? `<div class="worker-status">👤 ${task.worker || 'Folyamatban'}</div>` : ''}
                     </div>
                     
                     <div class="btn-group">
-                        <button class="btn-work" onclick="toggleProgress('${task.id}', ${task.inProgress})">${task.inProgress ? 'STOP' : 'START'}</button>
-                        <button class="btn-done" onclick="toggleDone('${task.id}', ${task.completed})">DONE</button>
+                        <button class="btn-work" onclick="toggleProgress('${task.id}', ${task.inProgress})">${task.inProgress ? 'LEÁLLÍTÁS' : 'ELKEZDÉS'}</button>
+                        <button class="btn-done" onclick="toggleDone('${task.id}', ${task.completed})">KÉSZ</button>
                         <button class="btn-del" onclick="deleteTask('${task.id}')">✕</button>
                     </div>
                 </div>
