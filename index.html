@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Assignment - Live Sync</title>
+    <title>Határidő napló</title>
     
     <script src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.min.js"></script>
     
@@ -64,13 +64,13 @@
 
 <div id="login-overlay">
     <div class="login-box">
-        <h2>TASK ASSIGNMENT</h2>
+        <h2>Határidő napló</h2>
         <button class="btn-login" onclick="login()">LOGIN WITH MICROSOFT</button>
     </div>
 </div>
 
 <div class="container" id="main-app" style="display:none;">
-    <h1>TASK ASSIGNMENT</h1>
+    <h1>Határidő napló</h1>
     <div id="taskList" class="task-list"></div>
 </div>
 
@@ -78,12 +78,12 @@
 
 <div id="taskModal" class="modal">
     <div class="modal-content">
-        <h2 style="margin:0; font-size: 1.5em; font-weight: 900; color: var(--accent-blue);">NEW TASK</h2>
+        <h2 style="margin:0; font-size: 1.5em; font-weight: 900; color: var(--accent-blue);">ÚJ FELADAT</h2>
         <input type="text" id="taskTitle" placeholder="Task description">
         <input type="date" id="taskDeadline">
         <input type="text" id="taskWorker" placeholder="Assignee (Optional)">
-        <button class="save-btn" onclick="addTask()">SAVE TASK</button>
-        <button class="cancel-btn" onclick="closeModal()">CANCEL</button>
+        <button class="save-btn" onclick="addTask()">FELADAT MENTÉSE</button>
+        <button class="cancel-btn" onclick="closeModal()">MÉGSE</button>
     </div>
 </div>
 
